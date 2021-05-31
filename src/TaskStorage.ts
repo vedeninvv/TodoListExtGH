@@ -50,6 +50,7 @@ export class TaskStorage {
         return allTasks;
     }
 
+//fix delete
     public delete(key: string) {
         let size = this.getSize();
         if (size !== undefined) {
