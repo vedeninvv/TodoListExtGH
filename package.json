@@ -16,6 +16,23 @@
     ],
     "main": "./dist/extension.js",
     "contributes": {
+        "viewsContainers": {
+            "activitybar": [{
+                "id": "TodoList",
+                "title": "Todo List",
+                "icon": "media/to-do-list.svg"
+            }]
+        },
+        "views": {
+            "TodoList": [{
+                "id": "TodoListView",
+                "name": "Todo List"
+            }]
+        },
+        "viewsWelcome": [{
+            "view": "TodoListView",
+            "contents": "To add a new task or view existing ones, open the list of tasks:\n[Open Todo List](command:todolist.openTodoLists)"
+        }],
         "commands": [{
             "command": "todolist.openTodoLists",
             "title": "Open Todo Lists",
