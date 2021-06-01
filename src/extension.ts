@@ -1,27 +1,26 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { TaskStorage } from './TaskStorage';
+import { TodoPanel, getWebviewOptions } from './WebPanel';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	//context.globalState.update("0", "0"); //delete this when you will want to save tasks forever
+	var taskStorage = TaskStorage.create(context);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "todolistextgh" is now active!');
+	context.subscriptions.push(
+		vscode.commands.registerCommand('todolist.openTodoLists', () => {
+			TodoPanel.createOrShow(context.extensionUri, taskStorage);
+		})
+	);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('todolistextgh.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from TodoListExtGH!');
-	});
-
-	context.subscriptions.push(disposable);
+	if (vscode.window.registerWebviewPanelSerializer) {
+		// Make sure we register a serializer in activation event
+		vscode.window.registerWebviewPanelSerializer(TodoPanel.viewType, {
+			async deserializeWebviewPanel(webviewPanel: vscode.WebviewPanel, state: any) {
+				console.log(`Got state: ${state}`);
+				// Reset the webview options so we use latest uri for `localResourceRoots`.
+				webviewPanel.webview.options = getWebviewOptions(context.extensionUri);
+				TodoPanel.revive(webviewPanel, context.extensionUri, taskStorage);
+			}
+		});
+	}
 }
-
-// this method is called when your extension is deactivated
-export function deactivate() {}
