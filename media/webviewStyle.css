@@ -1,0 +1,135 @@
+:root {
+    --container-paddding: 20px;
+    --input-padding-vertical: 6px;
+    --input-padding-horizontal: 4px;
+    --input-margin-vertical: 4px;
+    --input-margin-horizontal: 0;
+}
+
+body {
+    padding-top: 1%;
+    padding-left: 2%;
+    color: var(--vscode-foreground);
+    font-size: var(--vscode-font-size);
+    font-weight: var(--vscode-font-weight);
+    font-family: var(--vscode-font-family);
+    background-color: var(--vscode-editor-background);
+}
+
+body>*,
+form>* {
+    margin-block-start: var(--input-margin-vertical);
+    margin-block-end: var(--input-margin-vertical);
+    margin-bottom: 1.5%;
+}
+
+*:focus {
+    outline-color: var(--vscode-focusBorder) !important;
+}
+
+h1 {
+    margin-bottom: 0.8%;
+}
+
+button {
+    border: none;
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+    width: 5%;
+    text-align: center;
+    outline: 1px solid transparent;
+    outline-offset: 2px !important;
+    color: var(--vscode-button-foreground);
+    background: var(--vscode-button-background);
+}
+
+button:hover {
+    cursor: pointer;
+    background: var(--vscode-button-hoverBackground);
+}
+
+button:focus {
+    outline-color: var(--vscode-focusBorder);
+}
+
+button.secondary {
+    color: var(--vscode-button-secondaryForeground);
+    background: var(--vscode-button-secondaryBackground);
+}
+
+button.secondary:hover {
+    background: var(--vscode-button-secondaryHoverBackground);
+}
+
+input:not([type='checkbox']),
+textarea {
+    float: left;
+    display: block;
+    width: 20%;
+    border: none;
+    font-family: var(--vscode-font-family);
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+    color: var(--vscode-input-foreground);
+    outline-color: var(--vscode-input-border);
+    background-color: var(--vscode-input-background);
+    margin-right: 1%;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--vscode-input-placeholderForeground);
+}
+
+.tasks-block {
+    width: 500px;
+}
+
+.border {
+    list-style: none;
+    padding: 0;
+}
+
+.border li {
+    width: 85%;
+    float: left;
+    font-family: "Trebuchet MS", "Lucida Sans";
+    padding: 7px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-left: 10px solid #f05d22;
+    box-shadow: 2px -2px 5px 0 rgba(0, 0, 0, .1), -2px -2px 5px 0 rgba(0, 0, 0, .1), 2px 2px 5px 0 rgba(0, 0, 0, .1), -2px 2px 5px 0 rgba(0, 0, 0, .1);
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.border li:nth-child(5n + 1) {
+    border-color: #f05d22;
+}
+
+.border li:nth-child(5n + 2) {
+    border-color: #8bc63e;
+}
+
+.border li:nth-child(5n + 3) {
+    border-color: #fcba30;
+}
+
+.border li:nth-child(5n + 4) {
+    border-color: #1ccfc9;
+}
+
+.border li:nth-child(5n + 5) {
+    border-color: #493224;
+}
+
+.border li:hover {
+    border-left: 10px solid #ff0000;
+}
+
+.mark {
+    color: #8bc63e;
+    font-size: 30px;
+    text-decoration: none;
+    position: relative;
+    left: 5%;
+    bottom: 5%;
+}
